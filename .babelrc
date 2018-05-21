@@ -5,7 +5,13 @@
   "env": {
     "development": {
       "plugins": [
-        "transform-react-jsx-source"
+        "transform-react-jsx-source",
+        [
+          "import",
+          {
+            "libraryName": "antd-mobile"
+          }
+        ]
       ]
     }
   }
