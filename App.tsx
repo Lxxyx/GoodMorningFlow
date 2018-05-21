@@ -6,9 +6,13 @@ export default class App extends React.Component<{}> {
   render () {
     return (
       <View style={styles.container}>
-        <Button>antd-mobile button</Button>
+        <Button onClick={this.sayGoodMorning}>说早安</Button>
       </View>
     );
+  }
+
+  sayGoodMorning = () => {
+
   }
 }
 

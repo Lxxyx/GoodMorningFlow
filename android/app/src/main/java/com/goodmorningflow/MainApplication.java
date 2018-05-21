@@ -3,6 +3,8 @@ package com.goodmorningflow;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+
+import cn.jiguang.share.android.api.JShareInterface;
 import cn.jiguang.share.reactnative.JSharePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -14,6 +16,11 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
+  // 是否关闭 Log，默认不关闭
+  private static boolean SHUTDOWN_LOG = false;
+  // 是否关闭 toast，默认不关闭
+  private static boolean SHUTDOWN_TOAST = false;
+
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {
@@ -24,7 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new JSharePackage()
+            new JSharePackage(SHUTDOWN_LOG, SHUTDOWN_TOAST)
       );
     }
 
@@ -43,5 +50,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    JShareInterface.init(this);
   }
 }
